@@ -1,0 +1,34 @@
+Change the Instrument:
+-- To change the instrument, click on the instrument the user would like to use from the
+Instrument Menu on the left hand side of the program window.
+	(a.) To view more instruments, the user can navigate the vertical scrolling pane by
+	using the scroll bar or the scroll wheel on the mouse.
+	(b.) Each instrument is represented by an icon and the instrument name
+
+Change the Attributes of the Note:
+-- To change the attributes of the note you would like to write, at the bottom of the screen is
+the Note Attribute Panel where there are several controls for the specific attributes of the
+note:
+	(a.) To change the octave of the note, press either the arrows or use the slider to get to
+	the desired octave under the Octave Controls panel
+	(b.) To change the volume of the note, use the slider to get to the desired volume
+	under the Volume Control panel
+	(c.) To change the tempo of the note, use the slider to get to the desired temp under
+	the Tempo Control panel
+	(d.) To change the length of the note, use the dropdown menu to get the desired note
+	length under the Note Length panel
+	(e.) To start and end the loop sequence of the notes, use the button to start the loop
+	and use the same button to subsequently end the loop under the Loop Controls
+	panel
+
+Compose a Song:
+-- In the center of the screen, the available notes to use are laid out in chromatic scale, from
+c minor to b minor. Clicking each note will add its corresponding value and increment the
+cursor for the next intended value.
+
+Write to File:
+	1. In the top left corner in the toolbar menu, click File > Save.
+	2. Choose a directory where you would like your file to be stored and type the name you
+	would like to save it as.
+	3. Click save. The song is now saved as a .txt in the chosen directory and with the chosen
+	name.

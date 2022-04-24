@@ -1,0 +1,14 @@
+0 Flute
+3 Marimba
+4 Cello
+5 Steel String Guitar
+6 Trumpet
+7 Steel Drums
+8 Acoustic Bass
+9 Piano
+10 Snare Drum
+12 Bongo
+13 Electric Piano
+14 Slap Bass
+15 Orchestra Hit
+17 Distortion Guitar

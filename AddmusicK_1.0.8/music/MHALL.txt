@@ -1,0 +1,6 @@
+#amk 2
+#0 w255 t50
+@9 v125 o3
+
+[e4d4c4d4e4e4e4d4d4d4e4e4e4e4d4c4d4e4e4e4e4d4d4e4d4c4]10
+
