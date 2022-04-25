@@ -3,7 +3,7 @@
  * 
  * Programmer Name: Team 5
  * 
- * Class Name: MusicEditorUI
+ * Class Name: MusicEditorUtility
  *
  ******************************************************************************************
  * 
@@ -24,8 +24,6 @@
  * 
  ******************************************************************************************/
 
-import javax.sound.midi.MidiUnavailableException;
-import javax.sound.midi.Sequencer;
 import javax.swing.*;
 import javax.swing.border.LineBorder;
 import javax.swing.event.ChangeEvent;
@@ -34,9 +32,7 @@ import javax.swing.filechooser.FileFilter;
 import javax.swing.plaf.metal.MetalToggleButtonUI;
 
 import org.jfugue.pattern.Pattern;
-import org.jfugue.pattern.PatternProducer;
 import org.jfugue.player.Player;
-import org.jfugue.realtime.RealtimePlayer;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -48,7 +44,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 
-public class MusicEditorUI extends JFrame implements ActionListener {
+public class MusicEditorUtility extends JFrame implements ActionListener, MusicEditorIF {
 
     /****************************
      * Private instance variables
@@ -77,7 +73,7 @@ public class MusicEditorUI extends JFrame implements ActionListener {
      * Description: Class Constructor
      * 
      *********************************/
-    public MusicEditorUI() {
+    public MusicEditorUtility() {
 
         /*****************************
          * Defining instance variables
@@ -90,7 +86,7 @@ public class MusicEditorUI extends JFrame implements ActionListener {
         currentChannel = 0;
         totalChannel = 1;
         channelValues = new ArrayList<ChannelValues>();
-        channelValues.add(new ChannelValues("0", "255", "50", InstrumentEnum.PIANO.VALUE, "125", "4", "3", false));
+        channelValues.add(new ChannelValues("0", "255", "50", InstrumentEnum.PIANO.VALUE, "125", "4", "1", false));
         noteSets = new ArrayList<MusicNotesSets>();
         noteSets.add(new MusicNotesSets());
 
@@ -432,7 +428,7 @@ public class MusicEditorUI extends JFrame implements ActionListener {
 
     }
 
-    private void playAll() {
+    public void playAll() {
 
         for (int i = 0; i < totalChannel; i++) {
             pattern[i] = null;
