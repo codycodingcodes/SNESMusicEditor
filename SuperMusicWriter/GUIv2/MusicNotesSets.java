@@ -45,7 +45,7 @@ public class MusicNotesSets extends ListContainerAbstract {
 	// CONSTRUCTOR //
 
 	/////////////////////////
-	private MusicNotesSets() {
+	public MusicNotesSets() {
 		noteSet = new String[MAXLIMIT];
 		size = 0;
 	}

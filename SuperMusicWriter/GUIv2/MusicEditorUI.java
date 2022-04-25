@@ -92,7 +92,7 @@ public class MusicEditorUI extends JFrame implements ActionListener {
         channelValues = new ArrayList<ChannelValues>();
         channelValues.add(new ChannelValues("0", "255", "50", InstrumentEnum.PIANO.VALUE, "125", "4", "3", false));
         noteSets = new ArrayList<MusicNotesSets>();
-        noteSets.add(MusicNotesSets.getMusicNotesSetInstance());
+        noteSets.add(new MusicNotesSets());
 
         octaveLevel = "5";
         musicInstrumentUsed.add(new String("PIANO"));
@@ -407,7 +407,7 @@ public class MusicEditorUI extends JFrame implements ActionListener {
                 chPanels.addNewTab();
                 pattern[getChannel()] = new Pattern(" ");
 
-                noteSets.add(MusicNotesSets.getMusicNotesSetInstance());
+                noteSets.add(new MusicNotesSets());
                 channelValues.add(new ChannelValues(String.valueOf(getChannel())));
 
                 musicInstrumentUsed.add(new String(InstrumentEnum.PIANO.toString()));
