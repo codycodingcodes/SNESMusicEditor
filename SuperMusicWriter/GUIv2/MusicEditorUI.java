@@ -284,7 +284,6 @@ public class MusicEditorUI extends JFrame implements ActionListener {
         else if (e.getActionCommand().equals(ConstantDataValues.FILEITEM[2])) {
             System.out.println("**exporting\n");
             String dir = System.getProperty("user.dir");// find directory of our program
-            dir = dir.split(".\\w+$")[0];// regex to remove last folder in dir path
             String exportName = (String) JOptionPane.showInputDialog("Enter the name you wish to export the song as"); // ask
                                                                                                                        // for
                                                                                                                        // user
@@ -303,14 +302,13 @@ public class MusicEditorUI extends JFrame implements ActionListener {
             try {
                 Process proAddMusicK = pbAddMusicK.start();// run AddMusick
                 proAddMusicK.waitFor();// wait for AddMusicK to be done
-
+                System.out.println("SPC File is in " + dir + "\\AddmusicK_1.0.8\\SPCs\\");
             } catch (IOException e1) {
                 System.out.println("AddMusick.exe not found");
             } catch (InterruptedException e1) {
                 System.out.println("AddMusick.exe proccess error");
             }
             tempFile.delete();// delete temp .txt
-            System.out.println("SPC File is in " + dir + "\\AddmusicK_1.0.8\\SPCs\\");
         }
 
         // OPENS MUSIC PLAYER
