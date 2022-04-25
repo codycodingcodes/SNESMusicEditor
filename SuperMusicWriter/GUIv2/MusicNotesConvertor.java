@@ -251,7 +251,7 @@ public class MusicNotesConvertor {
 						notes.add(convertMML_To_JFugue(s.toString(), channel.get(currentChannelIndex)));
 						System.out.println("qwqw");
 						System.out.println(notes.get(currentChannelIndex).toString());
-						newNoteSets.add(MusicNotesSets.getMusicNotesSetInstance());
+						newNoteSets.add(new MusicNotesSets());
 						;
 						noteSetsArray = notes.get(currentChannelIndex).toString().toCharArray();
 						for (int j = 0; j < noteSetsArray.length; j++) {
