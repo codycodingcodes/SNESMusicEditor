@@ -7,9 +7,9 @@ public class MusicEditorProxy implements MusicEditorIF {
     }
 
     @Override
-    public void playAll() {
+    public void musicPlayer() {
 
-        musicEditorService.playAll();
+        musicEditorService.musicPlayer();
     }
 
 }

@@ -59,7 +59,7 @@ public class ChannelValues {
 	 * 
 	 ********************************/
 	public ChannelValues(String channel) {
-		this(channel, "255", "50", "9", "255", "4", "5", false);
+		this(channel, "255", "50", "9", "255", "4", "1", false);
 	}
 
 	/*********************************

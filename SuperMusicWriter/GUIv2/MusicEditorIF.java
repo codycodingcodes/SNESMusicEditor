@@ -1,4 +1,4 @@
 public interface MusicEditorIF {
 
-    public void playAll();
+    public void musicPlayer();
 }
