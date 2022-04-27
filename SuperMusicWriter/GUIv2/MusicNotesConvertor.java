@@ -34,6 +34,7 @@
 
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -80,7 +81,7 @@ public class MusicNotesConvertor {
 	 * 
 	 * @param ch
 	 **************************************/
-	public ArrayList<ChannelValues> readMMLChannelValues(String fileName)
+	public ArrayList<ChannelValues> readMMLChannelValues(File f)
 	// public void readMMLChannelValues(String fileName,ArrayList<MusicNotesSets>
 	// noteSets,ArrayList<ChannelValues> channel)
 	{
@@ -107,7 +108,8 @@ public class MusicNotesConvertor {
 
 			channel = new ArrayList<ChannelValues>();
 			// newNoteSets = new ArrayList<MusicNotesSets>();
-			out = new BufferedReader(new InputStreamReader(getClass().getResourceAsStream("Music/" + fileName)));
+			//out = new BufferedReader(new InputStreamReader(getClass().getResourceAsStream("Music/" + fileName))); //old
+			out = new BufferedReader(new InputStreamReader(new FileInputStream(f)));
 			while ((s = out.readLine()) != null) {
 
 				if (s.equals("#amk 2")) {

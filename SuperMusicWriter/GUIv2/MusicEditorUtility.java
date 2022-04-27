@@ -191,7 +191,7 @@ public class MusicEditorUtility extends JFrame implements ActionListener, MusicE
                 System.out.println(file.getAbsolutePath());
                 // TODO load from filea mml fortmat .txt file
 
-                channelValues = convert.readMMLChannelValues(file.getName());
+                channelValues = convert.readMMLChannelValues(file);
                 System.out.println("before notes");
                 noteSets = convert.returnNoteSets(file.getName(), channelValues);
                 System.out.println("after notes");
