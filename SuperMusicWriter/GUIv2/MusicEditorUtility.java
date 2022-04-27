@@ -38,7 +38,6 @@ import java.awt.*;
 import java.awt.event.*;
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileNotFoundException;
 
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -189,7 +188,7 @@ public class MusicEditorUtility extends JFrame implements ActionListener, MusicE
 
                 channelValues = convert.readMMLChannelValues(file);
                 System.out.println("before notes");
-                noteSets = convert.returnNoteSets(file, channelValues);
+                noteSets = convert.returnNoteSets(file.getName(), channelValues);
                 System.out.println("after notes");
 
                 // convert.readMMLChannelValues(file.getName(),noteSets,channelValues);

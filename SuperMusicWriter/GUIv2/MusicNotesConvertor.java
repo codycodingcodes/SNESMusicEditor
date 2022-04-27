@@ -109,7 +109,9 @@ public class MusicNotesConvertor {
 
 			channel = new ArrayList<ChannelValues>();
 			// newNoteSets = new ArrayList<MusicNotesSets>();
-			//out = new BufferedReader(new InputStreamReader(getClass().getResourceAsStream("Music/" + fileName))); //old
+			// out = new BufferedReader(new
+			// InputStreamReader(getClass().getResourceAsStream("Music/" + fileName)));
+			// //old
 			out = new BufferedReader(new InputStreamReader(new FileInputStream(f)));
 			while ((s = out.readLine()) != null) {
 
@@ -214,7 +216,7 @@ public class MusicNotesConvertor {
 
 	}
 
-	public ArrayList<MusicNotesSets> returnNoteSets(File f, ArrayList<ChannelValues> channel)
+	public ArrayList<MusicNotesSets> returnNoteSets(String string, ArrayList<ChannelValues> channel)
 	// public void readMMLChannelValues(String fileName,ArrayList<MusicNotesSets>
 	// noteSets,ArrayList<ChannelValues> channel)
 	{
@@ -236,8 +238,9 @@ public class MusicNotesConvertor {
 		try {
 
 			newNoteSets = new ArrayList<MusicNotesSets>();
-			// out = new BufferedReader(new InputStreamReader(getClass().getResourceAsStream("Music/" + fileName)));
-			out = new BufferedReader(new InputStreamReader(new FileInputStream(f)));
+			// out = new BufferedReader(new
+			// InputStreamReader(getClass().getResourceAsStream("Music/" + fileName)));
+			out = new BufferedReader(new InputStreamReader(new FileInputStream(string)));
 			while ((s = out.readLine()) != null) {
 
 				if (s.equals("#amk 2")) {
@@ -550,12 +553,14 @@ public class MusicNotesConvertor {
 				if (channel.get(i).getSuperLoop()) {
 
 					saveToFile
-							.write(channel.get(i).getChannelData() + "\n[[" + adaptor.jfugueNoteSet(music.get(i)).getMMLFormat()
+							.write(channel.get(i).getChannelData() + "\n[["
+									+ adaptor.jfugueNoteSet(music.get(i)).getMMLFormat()
 									+ "]]" + channel.get(i).getRepeatValue() + "\n\n");
 
 				} else {
 					saveToFile.write(
-							channel.get(i).getChannelData() + "\n" + "[" + adaptor.jfugueNoteSet(music.get(i)).getMMLFormat()
+							channel.get(i).getChannelData() + "\n" + "["
+									+ adaptor.jfugueNoteSet(music.get(i)).getMMLFormat()
 									+ "]" + channel.get(i).getRepeatValue() + "\n\n");
 
 				}
