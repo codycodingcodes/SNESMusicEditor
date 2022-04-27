@@ -27,8 +27,8 @@ import java.awt.event.MouseListener;
 public class CustomButtonHelper extends JButton {
 
 	/****************************
-     * Private instance variables
-     ****************************/
+	 * Private instance variables
+	 ****************************/
 	private static final long serialVersionUID = 1L;
 	private String buttonName;
 	private String buttonCode;
@@ -38,7 +38,8 @@ public class CustomButtonHelper extends JButton {
 	/*********************************
 	 * 
 	 * Name: CustomButtonHelper
-     * Description: Class Constructor
+	 * Description: Class Constructor
+	 * 
 	 * @param dim, @param name
 	 * 
 	 ********************************/
@@ -49,7 +50,8 @@ public class CustomButtonHelper extends JButton {
 	/******************************************************************************
 	 * 
 	 * Name: CustomButtonHelper
-     * Description: Class Constructor
+	 * Description: Class Constructor
+	 * 
 	 * @param dim, @param name, @param vertpos, @param horizPos, @param isInstrument
 	 * 
 	 *******************************************************************************/
@@ -152,8 +154,9 @@ public class CustomButtonHelper extends JButton {
 
 	/**********************************************************
 	 * 
-	 * Name: getInstrumentName 
-	 * Description: returns the name of the instrument selected 
+	 * Name: getInstrumentName
+	 * Description: returns the name of the instrument selected
+	 * 
 	 * @return String
 	 * 
 	 **********************************************************/
@@ -163,8 +166,9 @@ public class CustomButtonHelper extends JButton {
 
 	/***********************************************************************
 	 * 
-	 * Name: getInstrumentCode 
-	 * Description: returns the key corresponding to the selected instrument 
+	 * Name: getInstrumentCode
+	 * Description: returns the key corresponding to the selected instrument
+	 * 
 	 * @return String
 	 * 
 	 ***********************************************************************/
