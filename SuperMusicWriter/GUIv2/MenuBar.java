@@ -6,7 +6,7 @@ import javax.swing.JMenuItem;
 
 public class MenuBar {
 
-    public MenuBar(MusicEditorUtility meU, JFrame frame) {
+    public MenuBar(MusicEditorFrame meF, JFrame frame) {
         /****************
          * Local Variables
          * Used to set up the menu bar
@@ -54,7 +54,7 @@ public class MenuBar {
             for (int j = 0; j < tempItem.length; j++) {
 
                 menu[j] = new JMenuItem(tempItem[j]);
-                menu[j].addActionListener(meU);
+                menu[j].addActionListener(meF);
                 if (i == 0)
                     menu[j].setIcon(
                             new ImageIcon(getClass().getResource("Icons/" + tempItem[j].toLowerCase() + ".png")));

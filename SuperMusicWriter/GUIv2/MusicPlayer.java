@@ -14,7 +14,7 @@ import org.jfugue.player.Player;
 public class MusicPlayer {
 
         public MusicPlayer(int totalChannel, Pattern[] pattern, ArrayList<ChannelValues> channelValues,
-                        ArrayList<MusicNotesSets> noteSets, MusicEditorUtility meU, Player player) {
+                        ArrayList<MusicNotesSets> noteSets, MusicEditorFrame meF, Player player) {
                 ImageIcon playIcon = new ImageIcon(getClass().getResource("Icons/play.png"));
                 ImageIcon stopIcon = new ImageIcon(getClass().getResource("Icons/stop.png"));
 
@@ -42,7 +42,7 @@ public class MusicPlayer {
                         @Override
                         public void actionPerformed(ActionEvent e) {
 
-                                playMusic(totalChannel, pattern, channelValues, noteSets, meU, player);
+                                playMusic(totalChannel, pattern, channelValues, noteSets, meF, player);
                         }
                 });
 
@@ -56,7 +56,7 @@ public class MusicPlayer {
         }
 
         public static void playMusic(int totalChannel, Pattern[] pattern, ArrayList<ChannelValues> channelValues,
-                        ArrayList<MusicNotesSets> noteSets, MusicEditorUtility meU, Player player) {
+                        ArrayList<MusicNotesSets> noteSets, MusicEditorFrame meU, Player player) {
                 for (int i = 0; i < totalChannel; i++) {
                         pattern[i] = null;
                         pattern[i] = new Pattern(

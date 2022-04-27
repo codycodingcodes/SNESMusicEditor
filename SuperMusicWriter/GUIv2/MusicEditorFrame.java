@@ -43,7 +43,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 
-public class MusicEditorUtility extends JFrame implements ActionListener, MusicEditorIF {
+public class MusicEditorFrame extends JFrame implements ActionListener {
 
     /****************************
      * Private instance variables
@@ -64,7 +64,17 @@ public class MusicEditorUtility extends JFrame implements ActionListener, MusicE
     JSlider volumeSlider;
     JSlider tempoSlider;
 
+    public static MusicEditorFrame meF;
+
     private ChannelPanels chPanels;
+
+    public static MusicEditorFrame getInstance() {
+        if (meF == null) {
+            meF = new MusicEditorFrame();
+        }
+
+        return meF;
+    }
 
     /*********************************
      * 
@@ -72,7 +82,7 @@ public class MusicEditorUtility extends JFrame implements ActionListener, MusicE
      * Description: Class Constructor
      * 
      *********************************/
-    public MusicEditorUtility() {
+    private MusicEditorFrame() {
 
         /*****************************
          * Defining instance variables
