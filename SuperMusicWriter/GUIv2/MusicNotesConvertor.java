@@ -49,6 +49,7 @@ public class MusicNotesConvertor {
 	/////////////////////////////////////
 
 	private ArrayList<String> notes;
+	private MusicNoteSetsAdaptor adaptor;
 
 	////////////////////////////////////
 
@@ -59,7 +60,7 @@ public class MusicNotesConvertor {
 	/////////////////////////
 
 	public MusicNotesConvertor() {
-
+		adaptor = new MusicNoteSetsAdaptor();
 		notes = new ArrayList<String>();
 	}
 
@@ -71,7 +72,7 @@ public class MusicNotesConvertor {
 
 	/////////////////////////////////////
 
-	public ArrayList<String> getNotes() {
+	private ArrayList<String> getNotes() {// TODO: unused?
 		return notes;
 	}
 
@@ -213,7 +214,7 @@ public class MusicNotesConvertor {
 
 	}
 
-	public ArrayList<MusicNotesSets> returnNoteSets(String fileName, ArrayList<ChannelValues> channel)
+	public ArrayList<MusicNotesSets> returnNoteSets(File f, ArrayList<ChannelValues> channel)
 	// public void readMMLChannelValues(String fileName,ArrayList<MusicNotesSets>
 	// noteSets,ArrayList<ChannelValues> channel)
 	{
@@ -235,7 +236,8 @@ public class MusicNotesConvertor {
 		try {
 
 			newNoteSets = new ArrayList<MusicNotesSets>();
-			out = new BufferedReader(new InputStreamReader(getClass().getResourceAsStream("Music/" + fileName)));
+			// out = new BufferedReader(new InputStreamReader(getClass().getResourceAsStream("Music/" + fileName)));
+			out = new BufferedReader(new InputStreamReader(new FileInputStream(f)));
 			while ((s = out.readLine()) != null) {
 
 				if (s.equals("#amk 2")) {
@@ -295,8 +297,8 @@ public class MusicNotesConvertor {
 	 * @param channel
 	 * @return String
 	 ******************************************************/
-
-	public String convertMML_To_JFugue(String mmlFormat, ChannelValues channel) {
+	@Deprecated
+	private String convertMML_To_JFugue(String mmlFormat, ChannelValues channel) {
 
 		//////////////////////////////
 
@@ -412,7 +414,8 @@ public class MusicNotesConvertor {
 	 * @param musicNotes
 	 * @return String
 	 ********************************************************/
-	public String convert_JFugue_To_MMLFormat(MusicNotesSets musicNotes) {
+	@Deprecated
+	private String convert_JFugue_To_MMLFormat(MusicNotesSets musicNotes) {
 		String mmlFormat = new String();
 
 		for (int i = 0; i < musicNotes.getSize(); i++) {
@@ -547,12 +550,12 @@ public class MusicNotesConvertor {
 				if (channel.get(i).getSuperLoop()) {
 
 					saveToFile
-							.write(channel.get(i).getChannelData() + "\n[[" + convert_JFugue_To_MMLFormat(music.get(i))
+							.write(channel.get(i).getChannelData() + "\n[[" + adaptor.jfugueNoteSet(music.get(i)).getMMLFormat()
 									+ "]]" + channel.get(i).getRepeatValue() + "\n\n");
 
 				} else {
 					saveToFile.write(
-							channel.get(i).getChannelData() + "\n" + "[" + convert_JFugue_To_MMLFormat(music.get(i))
+							channel.get(i).getChannelData() + "\n" + "[" + adaptor.jfugueNoteSet(music.get(i)).getMMLFormat()
 									+ "]" + channel.get(i).getRepeatValue() + "\n\n");
 
 				}

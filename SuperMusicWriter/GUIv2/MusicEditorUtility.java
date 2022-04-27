@@ -189,7 +189,7 @@ public class MusicEditorUtility extends JFrame implements ActionListener, MusicE
 
                 channelValues = convert.readMMLChannelValues(file);
                 System.out.println("before notes");
-                noteSets = convert.returnNoteSets(file.getName(), channelValues);
+                noteSets = convert.returnNoteSets(file, channelValues);
                 System.out.println("after notes");
 
                 // convert.readMMLChannelValues(file.getName(),noteSets,channelValues);
