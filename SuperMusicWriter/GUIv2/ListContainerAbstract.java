@@ -7,7 +7,8 @@
  *
  ******************************************************************************************
  * 
- * Description: This class provides abstract methods for getting size and checking if empty
+ * Description: This class provides abstract methods for getting size and
+ * checking if empty
  * 
  * ****************************************************************************************
  * 
@@ -18,36 +19,32 @@
  * 
  ******************************************************************************************/
 
+public abstract class ListContainerAbstract implements ListContainerInterface {
 
-public abstract class ListContainerAbstract implements ListContainerInterface
-{
-	
 	protected int size = 0;
-	
+
 	/*********************************
 	 * 
 	 * Name: getSize
-     * Description: returns the size
+	 * Description: returns the size
+	 * 
 	 * @return size
 	 * 
 	 ********************************/
-	public int getSize()
-	{
+	public int getSize() {
 		return this.size;
 	}
-	
+
 	/*********************************************
 	 * 
 	 * Name: isEmpty
-     * Description: Checks to see if empty or full
+	 * Description: Checks to see if empty or full
+	 * 
 	 * @return size
 	 * 
 	 *********************************************/
-	public boolean isEmpty()
-	{
+	public boolean isEmpty() {
 		return this.size == 0;
 	}
-	
-	
 
 }

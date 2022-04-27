@@ -23,13 +23,13 @@
  * -getChannel():int
  * 
  ******************************************************************************************/
+import SetUp.*;
 
 import javax.swing.*;
 import javax.swing.border.LineBorder;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import javax.swing.filechooser.FileFilter;
-import javax.swing.plaf.metal.MetalToggleButtonUI;
 
 import org.jfugue.pattern.Pattern;
 import org.jfugue.player.Player;
@@ -129,10 +129,6 @@ public class MusicEditorUtility extends JFrame implements ActionListener, MusicE
                 JTabbedPane paneIndex = (JTabbedPane) e.getSource();
                 currentChannel = paneIndex.getSelectedIndex();
                 System.out.println("Current:" + currentChannel);
-
-                // octSlider.setValue(Integer.parseInt(channelValues.get(currentChannel).getOctaveLevel()));
-                // volumeSlider.setValue(Integer.parseInt(channelValues.get(currentChannel).getMasterVolume()));
-                // tempoSlider.setValue(Integer.parseInt(channelValues.get(currentChannel).getTempo()));
 
             }
         });
@@ -439,25 +435,7 @@ public class MusicEditorUtility extends JFrame implements ActionListener, MusicE
      * 
      ***************************************************/
     private void userManual() throws IOException {
-        BufferedReader br;
-
-        try {
-            br = new BufferedReader(new InputStreamReader(getClass().getResourceAsStream("UserManual.txt")));
-            StringBuilder fileText = new StringBuilder();
-            String text;
-
-            while ((text = br.readLine()) != null) {
-                fileText.append(text);
-                fileText.append(System.lineSeparator());
-            }
-            // ConstantDataValues.playRickAshley();
-            JOptionPane.showMessageDialog(null, fileText, "User Manual", JOptionPane.INFORMATION_MESSAGE);
-            br.close();
-            // player.play("R");
-        } catch (FileNotFoundException e1) {
-            // TODO Auto-generated catch block
-            e1.printStackTrace();
-        }
+        new UserManual();
     }
 
     /***********************************************
@@ -554,10 +532,7 @@ public class MusicEditorUtility extends JFrame implements ActionListener, MusicE
      * 
      *******************************************/
     private void setUpMenuBar(JFrame frame) {
-
-        MenuBar mb = new MenuBar();
-        mb.setUp(this, frame);
-
+        new MenuBar(this, frame);
     }
 
     /**************************************************************
@@ -569,7 +544,6 @@ public class MusicEditorUtility extends JFrame implements ActionListener, MusicE
      * 
      ***************************************************************/
     private void setUpButtonsInstrument(JFrame frame) {
-
         /****************
          * Local Variables
          ****************/
@@ -937,76 +911,11 @@ public class MusicEditorUtility extends JFrame implements ActionListener, MusicE
      **************************************************/
     private void setUpVolumeControls(JPanel panel) {
 
-        /*****************
-         * Volume Varibles
-         *****************/
-        JPanel volumePanel = new JPanel();
-        JLabel volumeLabel = new JLabel("Volume Control", SwingConstants.CENTER);
         volumeSlider = new JSlider(JSlider.HORIZONTAL, 0, 250, 125);
         JToggleButton volumeSwitch = new JToggleButton("Master Volume");
 
-        /***********************************************
-         * Volume panel layout, background and text color
-         ***********************************************/
-        volumePanel.setLayout(new BorderLayout());
-        volumeLabel.setForeground(Color.WHITE);
-        volumePanel.setBackground(ConstantDataValues.menuLabelColor);
-
-        /**********************
-         * Volume silder details
-         **********************/
-        volumeSlider.setMajorTickSpacing(50);
-        volumeSlider.setMinorTickSpacing(5);
-        volumeSlider.setPaintTicks(true);
-        volumeSlider.setPaintLabels(true);
-
-        /***************************************************
-         * Volume switch between master and instrument volume
-         ***************************************************/
-        volumeSwitch.setBackground(ConstantDataValues.modifierColor);
-        volumeSwitch.setUI(new MetalToggleButtonUI() {
-            @Override
-            protected Color getSelectColor() {
-                return ConstantDataValues.modifierColor;
-            }
-        });
-        volumeSwitch.addActionListener(new ActionListener() {
-
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if (volumeSwitch.isSelected()) {
-                    volumeSlider.setMaximum(150);
-                    volumeSwitch.setText("Instrument Volume");
-                    volumeSwitch.setBackground(ConstantDataValues.modifierColor);
-                } else {
-                    volumeSlider.setMaximum(250);
-                    volumeSwitch.setText("Master Volume");
-                    volumeSwitch.setBackground(ConstantDataValues.modifierColor);
-                }
-            }
-        });
-
-        volumeSlider.addChangeListener(new ChangeListener() {
-
-            @Override
-            public void stateChanged(ChangeEvent arg0) {
-                if (volumeSwitch.getText().equals("Instrument Volume")) {
-                    channelValues.get(currentChannel).setVolume(String.valueOf(volumeSlider.getValue()));
-                } else {
-                    channelValues.get(currentChannel).setMasterVolume(String.valueOf(volumeSlider.getValue()));
-                }
-
-            }
-        });
-
-        /**************************************************************************
-         * Add volume label, volume slider, and volume switch botton to volume panel
-         **************************************************************************/
-        volumePanel.add(volumeLabel, BorderLayout.NORTH);
-        volumePanel.add(volumeSlider);
-        volumePanel.add(volumeSwitch, BorderLayout.SOUTH);
-
-        panel.add(volumePanel);
+        VolumeControls vc = new VolumeControls();
+        vc.setUp(panel, volumeSlider, volumeSwitch, channelValues, currentChannel);
 
     }
 
@@ -1127,7 +1036,7 @@ public class MusicEditorUtility extends JFrame implements ActionListener, MusicE
      * @param musicInstrmentUsed, @param channel
      * 
      ******************************************************/
-    private void setInstrument(String musicInstrumentUsed, int channel) {
+    public void setInstrument(String musicInstrumentUsed, int channel) {
         this.musicInstrumentUsed.set(channel, musicInstrumentUsed);
     }
 

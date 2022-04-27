@@ -159,17 +159,15 @@ public class ConstantDataValues {
 		customFont = customFont.deriveFont(20f);
 		return customFont;
 	}
-	
-	public static void playRickAshley()
-	{
+
+	public static void playRickAshley() {
 		Player play = new Player();
 		try {
 			Pattern pattern = MidiFileManager
-					.loadPatternFromMidi(ConstantDataValues
-							.class.getResourceAsStream("Never-Gonna-Give-You-Up-3.mid"));
+					.loadPatternFromMidi(ConstantDataValues.class.getResourceAsStream("Never-Gonna-Give-You-Up-3.mid"));
 
-			Pattern p2 = new Pattern(":CON(4,100) " +pattern);
-		//	System.out.println( pattern);
+			Pattern p2 = new Pattern(":CON(4,100) " + pattern);
+			// System.out.println( pattern);
 			new Thread(new Runnable() {
 
 				@Override
@@ -177,7 +175,8 @@ public class ConstantDataValues {
 					// TODO Auto-generated method stub
 
 					play.play(p2);
-				}}).start();
+				}
+			}).start();
 
 		} catch (IOException | InvalidMidiDataException e) {
 			// TODO Auto-generated catch block

@@ -6,11 +6,7 @@ import javax.swing.JMenuItem;
 
 public class MenuBar {
 
-    public MenuBar() {
-
-    }
-
-    public void setUp(MusicEditorUtility meU, JFrame frame) {
+    public MenuBar(MusicEditorUtility meU, JFrame frame) {
         /****************
          * Local Variables
          * Used to set up the menu bar
@@ -73,5 +69,4 @@ public class MenuBar {
 
         }
     }
-
 }

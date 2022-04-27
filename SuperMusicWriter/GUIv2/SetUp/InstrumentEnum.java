@@ -1,3 +1,4 @@
+package SetUp;
 
 /******************************************************************************************
  * 
@@ -7,7 +8,8 @@
  *
  ******************************************************************************************
  * 
- * Description: This class sets sets instruments to an enum value for accessing each type
+ * Description: This class sets sets instruments to an enum value for accessing
+ * each type
  * 
  * ****************************************************************************************
  * 
@@ -18,10 +20,8 @@
  * 
  ******************************************************************************************/
 
-
 public enum InstrumentEnum {
-	
-	
+
 	FLUTE("0"),
 	MARIMBA("3"),
 	CELLO("4"),
@@ -31,46 +31,43 @@ public enum InstrumentEnum {
 	ACOUSTIC_BASS("8"),
 	PIANO("9"),
 	SYNTH_DRUM("10"),
-	TAIKO_DRUM("12"), //BONGO DRUM
+	TAIKO_DRUM("12"), // BONGO DRUM
 	ELECTRIC_PIANO("13"),
 	SLAP_BASS_1("14"),
 	ORCHESTRA_HIT("15"),
 	DISTORTION_GUITAR("17"),
-	GLOCKENSPEIL("2"),//not working atm
-	BASS_DRUM("21"),//not working atm
-	MARACAS("23"), //not working atm
-	HI_WOOD_BLOCK("25");//not working atm
+	GLOCKENSPEIL("2"), // not working atm
+	BASS_DRUM("21"), // not working atm
+	MARACAS("23"), // not working atm
+	HI_WOOD_BLOCK("25");// not working atm
 
-	
 	public final String VALUE;
-	
-	
-	private InstrumentEnum(String value)
-	{
-	  VALUE = value;	
+
+	private InstrumentEnum(String value) {
+		VALUE = value;
 	}
-	
+
 	/*************************************
 	 * 
 	 * Name: InstrumentEnum
 	 * Description: Returns the instrument
+	 * 
 	 * @param instrument
 	 * 
 	 ************************************/
-	
-	public static InstrumentEnum getInstrument(String instrumentCode)
-	{
+
+	public static InstrumentEnum getInstrument(String instrumentCode) {
 		switch (instrumentCode) {
 			case "0":
 			case "1":
 			case "2":
 				return FLUTE;
 
-			//	return GLOCKENSPEIL;
+			// return GLOCKENSPEIL;
 			case "3":
 				return MARIMBA;
 			case "4":
-				return	CELLO;
+				return CELLO;
 			case "5":
 				return STEEL_STRING_GUITAR;
 			case "6":
@@ -95,7 +92,7 @@ public enum InstrumentEnum {
 			case "17":
 				return DISTORTION_GUITAR;
 			default:
-			return PIANO;
+				return PIANO;
 		}
 	}
 
