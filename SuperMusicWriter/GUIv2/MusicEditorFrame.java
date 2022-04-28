@@ -1,4 +1,3 @@
-
 /******************************************************************************************
  * 
  * Programmer Name: Team 5
@@ -30,6 +29,7 @@ import javax.swing.border.LineBorder;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import javax.swing.filechooser.FileFilter;
+import javax.swing.JOptionPane;
 
 import org.jfugue.pattern.Pattern;
 import org.jfugue.player.Player;
@@ -43,7 +43,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 
-public class MusicEditorFrame extends JFrame implements ActionListener {
+public class MusicEditorFrame extends JFrame implements ActionListener, WindowListener {
 
     /****************************
      * Private instance variables
@@ -110,8 +110,14 @@ public class MusicEditorFrame extends JFrame implements ActionListener {
          * Set up the JFrame Properties
          *****************************/
         this.setTitle(ConstantDataValues.FRAMETITLE);
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         this.setSize(ConstantDataValues.FRAMEWIDTH, ConstantDataValues.FRAMEHEIGHT);
+
+        /***************************************
+         * sets up window frame and its functions
+         ***************************************/
+        addWindowListener(this);
+
 
         /***************************************
          * sets up the menu bar and its functions
@@ -1084,5 +1090,49 @@ public class MusicEditorFrame extends JFrame implements ActionListener {
     public int getChannel() {
         return currentChannel;
     }
+
+    @Override
+    public void windowOpened(WindowEvent e) {
+        //add button asking user if they want to load saved work
+        EntryWindow enter = new EntryWindow();
+    }
+
+    @Override
+    public void windowClosing(WindowEvent e) {
+        //ask if user wants to save progress
+        ExitWindow leave = new ExitWindow();
+        //then terminate program
+    }
+
+    @Override
+    public void windowClosed(WindowEvent e) {
+        // TODO Auto-generated method stub
+        
+    }
+
+    @Override
+    public void windowIconified(WindowEvent e) {
+        // TODO Auto-generated method stub
+        
+    }
+
+    @Override
+    public void windowDeiconified(WindowEvent e) {
+        // TODO Auto-generated method stub
+        
+    }
+
+    @Override
+    public void windowActivated(WindowEvent e) {
+        // TODO Auto-generated method stub
+        
+    }
+
+    @Override
+    public void windowDeactivated(WindowEvent e) {
+        // TODO Auto-generated method stub
+        
+    }
+    
 
 }
