@@ -1,16 +1,23 @@
 package SetUp;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.Font;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
 public class EntryWindow implements ActionListener{
 
     JFrame frame = new JFrame();
-    JLabel label = new JLabel("Would you like load your saved work?");
+    JLabel label = new JLabel("Would you like restore previous session?");
+    JFileChooser fileChooser;
+    //JLabel img = new javax.swing.JLabel();
+    ImageIcon img = new ImageIcon(getClass().getResource("../Icons/exit_entry.png"));
+    JLabel pic = new JLabel("testing");
 
     JButton yes = new JButton("yes");
     JButton no = new JButton("no");
@@ -28,12 +35,19 @@ public class EntryWindow implements ActionListener{
         no.addActionListener(this);
         no.setSize(60,30);
 
+        pic.setIcon(img);
+        pic.setVisible(true);
+        pic.setBounds(25,0,300,100);
+        pic.setSize(20,20);
+
         frame.add(label);
         frame.add(yes);
         frame.add(no);
+        frame.add(pic);
 
+        frame.setTitle("Music Editor for SNES Super Mario World");
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        frame.setSize(300,250);
+        frame.setSize(320,250);
         frame.setLayout(null);
         frame.setVisible(true);
 
@@ -42,7 +56,14 @@ public class EntryWindow implements ActionListener{
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == yes){
             //load progress
+
+            //then close only this window
+            frame.dispose();
         } 
+        else{
+            //simply close
+            frame.dispose();
+        }
         
     }
 }
