@@ -216,7 +216,7 @@ public class MusicNotesConvertor {
 
 	}
 
-	public ArrayList<MusicNotesSets> returnNoteSets(String string, ArrayList<ChannelValues> channel)
+	public ArrayList<MusicNotesSets> returnNoteSets(File f, ArrayList<ChannelValues> channel)
 	// public void readMMLChannelValues(String fileName,ArrayList<MusicNotesSets>
 	// noteSets,ArrayList<ChannelValues> channel)
 	{
@@ -240,7 +240,7 @@ public class MusicNotesConvertor {
 			newNoteSets = new ArrayList<MusicNotesSets>();
 			// out = new BufferedReader(new
 			// InputStreamReader(getClass().getResourceAsStream("Music/" + fileName)));
-			out = new BufferedReader(new InputStreamReader(new FileInputStream(string)));
+			out = new BufferedReader(new InputStreamReader(new FileInputStream(f)));
 			while ((s = out.readLine()) != null) {
 
 				if (s.equals("#amk 2")) {
@@ -255,7 +255,8 @@ public class MusicNotesConvertor {
 
 						System.out.println("MML2:" + s.toString());
 
-						notes.add(convertMML_To_JFugue(s.toString(), channel.get(currentChannelIndex)));
+						// notes.add(convertMML_To_JFugue(s.toString(), channel.get(currentChannelIndex)));
+						notes.add(adaptor.mmlNoteSet(s.toString()).channel(channel.get(currentChannelIndex)).getJFugueFormat());
 						System.out.println("qwqw");
 						System.out.println(notes.get(currentChannelIndex).toString());
 						newNoteSets.add(new MusicNotesSets());
