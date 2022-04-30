@@ -1,3 +1,4 @@
+
 /******************************************************************************************
  * 
  * Programmer Name: Team 5
@@ -63,6 +64,7 @@ public class MusicEditorFrame extends JFrame implements ActionListener, WindowLi
     private String note;
     JSlider volumeSlider;
     JSlider tempoSlider;
+    AddNoteCommand addNote = new AddNoteCommand();
 
     public static MusicEditorFrame meF;
 
@@ -117,7 +119,6 @@ public class MusicEditorFrame extends JFrame implements ActionListener, WindowLi
          * sets up window frame and its functions
          ***************************************/
         addWindowListener(this);
-
 
         /***************************************
          * sets up the menu bar and its functions
@@ -682,7 +683,8 @@ public class MusicEditorFrame extends JFrame implements ActionListener, WindowLi
                             note = e.getActionCommand() + octaveLevel
                                     + convert.convertNoteToJFugue((String) lengthMenu.getSelectedItem());
                             System.out.println(note);
-                            noteSets.get(currentChannel).add(note);
+                            // noteSets.get(currentChannel).add(note);
+                            addNote.doIt(note, noteSets.get(currentChannel));
                             chPanels.setNoteLabelText(currentChannel, noteSets.get(currentChannel),
                                     channelValues.get(currentChannel));
                             player.play("T30" + " I["
@@ -1022,7 +1024,7 @@ public class MusicEditorFrame extends JFrame implements ActionListener, WindowLi
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (noteSets.get(currentChannel).getSize() != 0) {// if note set is empty, dont bother it will break
-                    noteSets.get(currentChannel).removeAtEnd();
+                    addNote.undo(noteSets.get(currentChannel));
                     chPanels.setNoteLabelText(currentChannel, noteSets.get(currentChannel),
                             channelValues.get(currentChannel));
                 }
@@ -1093,46 +1095,45 @@ public class MusicEditorFrame extends JFrame implements ActionListener, WindowLi
 
     @Override
     public void windowOpened(WindowEvent e) {
-        //add button asking user if they want to load saved work
+        // add button asking user if they want to load saved work
         EntryWindow enter = new EntryWindow();
     }
 
     @Override
     public void windowClosing(WindowEvent e) {
-        //ask if user wants to save progress
+        // ask if user wants to save progress
         ExitWindow leave = new ExitWindow();
-        //then terminate program
+        // then terminate program
     }
 
     @Override
     public void windowClosed(WindowEvent e) {
         // TODO Auto-generated method stub
-        
+
     }
 
     @Override
     public void windowIconified(WindowEvent e) {
         // TODO Auto-generated method stub
-        
+
     }
 
     @Override
     public void windowDeiconified(WindowEvent e) {
         // TODO Auto-generated method stub
-        
+
     }
 
     @Override
     public void windowActivated(WindowEvent e) {
         // TODO Auto-generated method stub
-        
+
     }
 
     @Override
     public void windowDeactivated(WindowEvent e) {
         // TODO Auto-generated method stub
-        
+
     }
-    
 
 }

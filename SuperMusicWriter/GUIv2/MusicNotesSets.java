@@ -115,7 +115,7 @@ public class MusicNotesSets extends ListContainerAbstract {
 	/*********************************
 	 * 
 	 * Name: add
-	 * Description: adds the to the end of the list
+	 * Description: adds the note to the end of the list
 	 * 
 	 *********************************/
 	@Override
@@ -155,7 +155,7 @@ public class MusicNotesSets extends ListContainerAbstract {
 	 * Return: String
 	 * 
 	 *********************************/
-	@Override
+
 	public String removeAtEnd() {
 
 		size--;
