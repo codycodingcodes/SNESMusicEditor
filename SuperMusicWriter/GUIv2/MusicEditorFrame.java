@@ -153,6 +153,44 @@ public class MusicEditorFrame extends JFrame implements ActionListener, WindowLi
 
     }
 
+    public void loadPrevSession() {
+        MusicNotesConvertor convert = new MusicNotesConvertor();
+
+        System.out.println("**loading\n");
+
+        String dir = System.getProperty("user.dir");
+        File file = new File(dir + "\\SuperMusicWriter\\GUIv2\\Music\\prevSession.txt");
+
+        channelValues = convert.readMMLChannelValues(file);
+        System.out.println("before notes");
+        noteSets = convert.returnNoteSets(file, channelValues);
+        System.out.println("after notes");
+
+        // convert.readMMLChannelValues(file.getName(),noteSets,channelValues);
+        // System.out.println("Printing in UI:"+noteSets.get(0).noteSequence());
+        for (int i = 0; i < channelValues.size(); i++) {
+            if (i == 0) {
+                for (int j = totalChannel; j > 1; j--) {
+                    chPanels.removeLastTab();
+                    totalChannel--;
+                }
+                octSlider.setValue(Integer.parseInt(channelValues.get(i).getOctaveLevel()));
+                volumeSlider.setValue(Integer.parseInt(channelValues.get(i).getMasterVolume()));
+                tempoSlider.setValue(Integer.parseInt(channelValues.get(i).getTempo()));
+
+            } else {
+                chPanels.addNewTab();
+                octSlider.setValue(Integer.parseInt(channelValues.get(i).getOctaveLevel()));
+                volumeSlider.setValue(Integer.parseInt(channelValues.get(i).getMasterVolume()));
+                tempoSlider.setValue(Integer.parseInt(channelValues.get(i).getTempo()));
+
+            }
+            chPanels.setNoteLabelText(i, noteSets.get(i), channelValues.get(i));
+
+        }
+
+    }
+
     @Override
     public void actionPerformed(ActionEvent e) {
 
@@ -1096,13 +1134,13 @@ public class MusicEditorFrame extends JFrame implements ActionListener, WindowLi
     @Override
     public void windowOpened(WindowEvent e) {
         // add button asking user if they want to load saved work
-        EntryWindow enter = new EntryWindow();
+        EntryWindow enter = new EntryWindow(this);
     }
 
     @Override
     public void windowClosing(WindowEvent e) {
         // ask if user wants to save progress
-        ExitWindow leave = new ExitWindow();
+        ExitWindow leave = new ExitWindow(channelValues, noteSets);
         // then terminate program
     }
 

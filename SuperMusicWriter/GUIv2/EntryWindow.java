@@ -1,7 +1,7 @@
-package SetUp;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.awt.Font;
 
 import javax.swing.ImageIcon;
@@ -10,35 +10,45 @@ import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
-public class EntryWindow implements ActionListener{
+public class EntryWindow implements ActionListener {
 
     JFrame frame = new JFrame();
     JLabel label = new JLabel("Would you like restore previous session?");
     JFileChooser fileChooser;
-    //JLabel img = new javax.swing.JLabel();
-    ImageIcon img = new ImageIcon(getClass().getResource("../Icons/exit_entry.png"));
+    // JLabel img = new javax.swing.JLabel();
+    ImageIcon img = new ImageIcon(getClass().getResource("/Icons/exit_entry.png"));
     JLabel pic = new JLabel("testing");
 
     JButton yes = new JButton("yes");
     JButton no = new JButton("no");
-    public EntryWindow(){
-        label.setBounds(25,0,300,100);
-        label.setFont(new Font(null,Font.PLAIN,15));
 
-        yes.setBounds(50,130,50,50);
+    MusicNotesConvertor convert = new MusicNotesConvertor();
+    ArrayList<ChannelValues> cV;
+    ArrayList<MusicNotesSets> nS;
+
+    MusicEditorFrame mF;
+
+    public EntryWindow(MusicEditorFrame meF) {
+
+        this.mF = meF;
+
+        label.setBounds(25, 0, 300, 100);
+        label.setFont(new Font(null, Font.PLAIN, 15));
+
+        yes.setBounds(50, 130, 50, 50);
         yes.setFocusable(false);
         yes.addActionListener(this);
-        yes.setSize(60,30);
+        yes.setSize(60, 30);
 
-        no.setBounds(200,130,50,50);
+        no.setBounds(200, 130, 50, 50);
         no.setFocusable(false);
         no.addActionListener(this);
-        no.setSize(60,30);
+        no.setSize(60, 30);
 
         pic.setIcon(img);
         pic.setVisible(true);
-        pic.setBounds(25,0,300,100);
-        pic.setSize(20,20);
+        pic.setBounds(25, 0, 300, 100);
+        pic.setSize(20, 20);
 
         frame.add(label);
         frame.add(yes);
@@ -47,23 +57,24 @@ public class EntryWindow implements ActionListener{
 
         frame.setTitle("Music Editor for SNES Super Mario World");
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        frame.setSize(320,250);
+        frame.setSize(320, 250);
         frame.setLayout(null);
         frame.setVisible(true);
 
     }
+
     @Override
     public void actionPerformed(ActionEvent e) {
-        if(e.getSource() == yes){
-            //load progress
+        if (e.getSource() == yes) {
 
-            //then close only this window
+            mF.loadPrevSession();
+
+            // then close only this window
             frame.dispose();
-        } 
-        else{
-            //simply close
+        } else {
+            // simply close
             frame.dispose();
         }
-        
+
     }
 }
