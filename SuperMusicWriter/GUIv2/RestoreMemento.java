@@ -1,32 +1,36 @@
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
 import java.util.ArrayList;
 import java.awt.Font;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
-public class ExitWindow implements ActionListener {
+public class RestoreMemento implements ActionListener {
 
-    MusicNotesConvertor convert = new MusicNotesConvertor();
     JFrame frame = new JFrame();
-    JLabel label = new JLabel("Would you like to save your progress?");
+    JLabel label = new JLabel("Would you like restore previous session?");
     JFileChooser fileChooser;
-    MusicEditorFrame m;
+    // JLabel img = new javax.swing.JLabel();
+    ImageIcon img = new ImageIcon(getClass().getResource("/Icons/exit_entry.png"));
+    JLabel pic = new JLabel("testing");
+
     JButton yes = new JButton("yes");
     JButton no = new JButton("no");
 
+    MusicNotesConvertor convert = new MusicNotesConvertor();
     ArrayList<ChannelValues> cV;
     ArrayList<MusicNotesSets> nS;
 
-    public ExitWindow(ArrayList<ChannelValues> channelValues, ArrayList<MusicNotesSets> noteSets) {
+    MusicEditorFrame mF;
 
-        this.cV = channelValues;
-        this.nS = noteSets;
+    public RestoreMemento(MusicEditorFrame meF) {
+
+        this.mF = meF;
 
         label.setBounds(25, 0, 300, 100);
         label.setFont(new Font(null, Font.PLAIN, 15));
@@ -41,13 +45,19 @@ public class ExitWindow implements ActionListener {
         no.addActionListener(this);
         no.setSize(60, 30);
 
+        pic.setIcon(img);
+        pic.setVisible(true);
+        pic.setBounds(25, 0, 300, 100);
+        pic.setSize(20, 20);
+
         frame.add(label);
         frame.add(yes);
         frame.add(no);
+        frame.add(pic);
 
         frame.setTitle("Music Editor for SNES Super Mario World");
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        frame.setSize(300, 250);
+        frame.setSize(320, 250);
         frame.setLayout(null);
         frame.setVisible(true);
 
@@ -55,29 +65,15 @@ public class ExitWindow implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-
         if (e.getSource() == yes) {
 
-            // save progress
-            System.out.println("**saving\n");
-            // file = new File(fileChooser.getSelectedFile().getAbsolutePath());
-            fileChooser = new JFileChooser();
+            mF.restoreMemento();
 
-            /*******************
-             * Overwirting a file
-             ********************/
-            // fileChooser.setSelectedFile(new File("Untitled"));
-            String dir = System.getProperty("user.dir");
-            File tempFile = new File(dir + "\\SuperMusicWriter\\GUIv2\\Music\\prevSession.txt");
-
-            convert.saveFile(tempFile, cV, nS);
-            System.out.println(tempFile);
-
-            // close entire program
-            System.exit(0);
+            // then close only this window
+            frame.dispose();
         } else {
-            // just close entire program
-            System.exit(0);
+            // simply close
+            frame.dispose();
         }
 
     }

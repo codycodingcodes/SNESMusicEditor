@@ -153,7 +153,7 @@ public class MusicEditorFrame extends JFrame implements ActionListener, WindowLi
 
     }
 
-    public void loadPrevSession() {
+    public void restoreMemento() {
         MusicNotesConvertor convert = new MusicNotesConvertor();
 
         System.out.println("**loading\n");
@@ -1134,13 +1134,13 @@ public class MusicEditorFrame extends JFrame implements ActionListener, WindowLi
     @Override
     public void windowOpened(WindowEvent e) {
         // add button asking user if they want to load saved work
-        EntryWindow enter = new EntryWindow(this);
+        RestoreMemento enter = new RestoreMemento(this);
     }
 
     @Override
     public void windowClosing(WindowEvent e) {
         // ask if user wants to save progress
-        ExitWindow leave = new ExitWindow(channelValues, noteSets);
+        BuildMemento leave = new BuildMemento(channelValues, noteSets);
         // then terminate program
     }
 
