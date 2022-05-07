@@ -1,0 +1,13 @@
+If you’re updating from an older version of SNES SPC700 Player to the latest one,
+you’d be happy to know that replacing all of its contents do not affect your
+personalized settings and playlists! Yep! These stuff are saved in these two files:
+ - Your settings are saved in your spcplay.ini file.
+ - Your playlist is saved in your spcplay.stk file.
+You can also remove these two files mentioned above if you want to start fresh.
+
+If there’s a bug pestering in your app, you might consider open an issue via GitHub:
+<https://github.com/dgrfactory/spcplay/issues>
+
+Enjoy, and have fun listening to SNES music!
+
+~ Klug Nanahikari (SMWC ID: 28710)
