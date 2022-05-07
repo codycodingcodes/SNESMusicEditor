@@ -66,9 +66,9 @@ public class MusicEditorFrame extends JFrame implements ActionListener, WindowLi
     JSlider tempoSlider;
     AddNoteCommand addNote = new AddNoteCommand();
 
-    public static MusicEditorFrame meF;
-
     private ChannelPanels chPanels;
+
+    public static MusicEditorFrame meF;
 
     public static MusicEditorFrame getInstance() {
         if (meF == null) {

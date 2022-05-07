@@ -13,7 +13,7 @@ import javax.swing.JLabel;
 public class RestoreMemento implements ActionListener {
 
     JFrame frame = new JFrame();
-    JLabel label = new JLabel("Would you like restore previous session?");
+    JLabel label = new JLabel("Restore previous session?");
     JFileChooser fileChooser;
     // JLabel img = new javax.swing.JLabel();
     ImageIcon img = new ImageIcon(getClass().getResource("/Icons/exit_entry.png"));
